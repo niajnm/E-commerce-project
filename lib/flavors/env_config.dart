@@ -1,4 +1,4 @@
-import 'package:weather_assesment/app/utils/constants.dart';
+import 'package:e_commerce/app/utils/constants.dart';
 import 'package:logger/logger.dart';
 class EnvConfig {
   final String appName;

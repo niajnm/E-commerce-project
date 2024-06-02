@@ -1,5 +1,5 @@
-import 'package:weather_assesment/app/core/values/image_values.dart';
-import 'package:weather_assesment/app/data/remote/weather_remote/model/weather_response_model.dart';
+import 'package:e_commerce/app/core/values/image_values.dart';
+import 'package:e_commerce/app/data/remote/weather_remote/model/weather_response_model.dart';
 import 'package:intl/intl.dart';
 
 class DailyUIModel {

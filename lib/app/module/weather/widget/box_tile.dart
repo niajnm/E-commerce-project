@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:weather_assesment/app/core/values/app_values.dart';
-import 'package:weather_assesment/app/core/values/extention.dart';
-import 'package:weather_assesment/app/core/values/style_sheet.dart';
+import 'package:e_commerce/app/core/values/app_values.dart';
+import 'package:e_commerce/app/core/values/extention.dart';
+import 'package:e_commerce/app/core/values/style_sheet.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BoxTile extends StatelessWidget {

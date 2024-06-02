@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 //import 'package:dio_http_cache/dio_http_cache.dart';
-import 'package:weather_assesment/app/core/network/pretty_dio_logger.dart';
-import 'package:weather_assesment/app/core/network/request_headers.dart';
-import 'package:weather_assesment/flavors/build_config.dart';
+import 'package:e_commerce/app/core/network/pretty_dio_logger.dart';
+import 'package:e_commerce/app/core/network/request_headers.dart';
+import 'package:e_commerce/flavors/build_config.dart';
 
 class DioProvider {
   static final String baseUrl = BuildConfig.instance.config.baseUrl;

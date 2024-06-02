@@ -1,7 +1,7 @@
 import 'dart:developer';
-import 'package:weather_assesment/app/data/remote/end_point_api.dart';
-import 'package:weather_assesment/app/data/remote/weather_remote/model/weather_params.dart';
-import 'package:weather_assesment/app/data/remote/weather_remote/weather_remote_source.dart';
+import 'package:e_commerce/app/data/remote/end_point_api.dart';
+import 'package:e_commerce/app/data/remote/weather_remote/model/weather_params.dart';
+import 'package:e_commerce/app/data/remote/weather_remote/weather_remote_source.dart';
 import '../../../core/base/base_remote_source.dart';
 
 class WeatherRemoteSourceImpl extends BaseRemoteSource

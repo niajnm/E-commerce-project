@@ -6,10 +6,11 @@ import 'package:e_commerce/app/core/services/service_locator.dart';
 import 'package:e_commerce/app/data/remote/weather_remote/model/weather_params.dart';
 import 'package:e_commerce/app/data/remote/weather_remote/model/weather_response_model.dart';
 import 'package:e_commerce/app/data/remote/weather_remote/weather_remote_source.dart';
+import 'package:e_commerce/app/data/repository/auth_repository/auth_repository.dart';
 import 'package:e_commerce/app/utils/internet_connection.dart';
-import 'weather_repository.dart';
 
-class WeatherRepositoryImpl implements WeatherRepository {
+
+class AuthRepositoryImpl implements AuthRepository {
   final WeatherRemoteSource _remoteSource =
       serviceLocator<WeatherRemoteSource>();
 
@@ -56,5 +57,17 @@ class WeatherRepositoryImpl implements WeatherRepository {
     log(' Weather response  $response');
     var result = WeatherResponseModel.fromJson(response.data);
     return result;
+  }
+  
+  @override
+  Future userLogin(queryParams) {
+    // TODO: implement userLogin
+    throw UnimplementedError();
+  }
+  
+  @override
+  Future userRegistration(queryParams) {
+    // TODO: implement userRegistration
+    throw UnimplementedError();
   }
 }

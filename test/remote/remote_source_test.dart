@@ -4,14 +4,14 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:logger/logger.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:weather_assesment/app/data/remote/end_point_api.dart';
-import 'package:weather_assesment/app/data/remote/weather_remote/model/weather_params.dart';
-import 'package:weather_assesment/app/data/remote/weather_remote/model/weather_response_model.dart';
-import 'package:weather_assesment/app/data/remote/weather_remote/weather_remote_source_impl.dart';
-import 'package:weather_assesment/app/utils/constants.dart';
-import 'package:weather_assesment/flavors/build_config.dart';
-import 'package:weather_assesment/flavors/env_config.dart';
-import 'package:weather_assesment/flavors/environment.dart';
+import 'package:e_commerce/app/data/remote/end_point_api.dart';
+import 'package:e_commerce/app/data/remote/weather_remote/model/weather_params.dart';
+import 'package:e_commerce/app/data/remote/weather_remote/model/weather_response_model.dart';
+import 'package:e_commerce/app/data/remote/weather_remote/weather_remote_source_impl.dart';
+import 'package:e_commerce/app/utils/constants.dart';
+import 'package:e_commerce/flavors/build_config.dart';
+import 'package:e_commerce/flavors/env_config.dart';
+import 'package:e_commerce/flavors/environment.dart';
 import 'remote_source_test.mocks.dart';
 
 @GenerateMocks([Dio])

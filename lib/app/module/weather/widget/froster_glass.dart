@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'dart:ui';
 
-import 'package:weather_assesment/app/core/values/app_values.dart';
+import 'package:e_commerce/app/core/values/app_values.dart';
 
 // ignore: must_be_immutable
 class FrostedGlassBox extends StatelessWidget {

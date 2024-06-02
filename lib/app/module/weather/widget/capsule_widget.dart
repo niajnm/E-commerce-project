@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:weather_assesment/app/core/values/app_colors.dart';
-import 'package:weather_assesment/app/core/values/app_values.dart';
-import 'package:weather_assesment/app/core/values/extention.dart';
-import 'package:weather_assesment/app/module/weather/widget/froster_glass.dart';
+import 'package:e_commerce/app/core/values/app_colors.dart';
+import 'package:e_commerce/app/core/values/app_values.dart';
+import 'package:e_commerce/app/core/values/extention.dart';
+import 'package:e_commerce/app/module/weather/widget/froster_glass.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CapsuleWidget extends StatelessWidget {

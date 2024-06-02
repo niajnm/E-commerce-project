@@ -1,8 +1,9 @@
+import 'package:e_commerce/app/module/user_auth/view/LoginPage.dart';
 import 'package:flutter/material.dart';
-import 'package:weather_assesment/app/core/route/route_paths.dart';
-import 'package:weather_assesment/app/module/weather/view/weather_main_screen.dart';
+import 'package:e_commerce/app/core/route/route_paths.dart';
+import 'package:e_commerce/app/module/weather/view/weather_main_screen.dart';
 import 'package:go_router/go_router.dart';
-import 'package:weather_assesment/app/utils/location/location_service.dart';
+import 'package:e_commerce/app/utils/location/location_service.dart';
 
 // GoRouter configuration
 class GoRouterService {
@@ -11,19 +12,22 @@ class GoRouterService {
 static final router = GoRouter(
   initialLocation: '/',
   routes: [
-    GoRoute(
-      path: RoutePaths.weatherMainPage,
-      builder: (context, state) => const WeatherMainScreen(),
-      redirect: (context, state) async {
-        bool isPermissionGranted = await LocationService.isLocationPermissionGranted();
-        if (isPermissionGranted) {
-          return RoutePaths.weatherMainPage; // No redirection, proceed to WeatherMainScreen
-        } else {
-          // Location permission is not granted, redirect to another page
-          return "/"; // Redirect to the initial location
-        }
-      },
-    ),
+
+
+    GoRoute(path: '/' ,    builder: (context, state) => const LoginPage() ),
+    // GoRoute(
+    //   path: RoutePaths.weatherMainPage,
+    //   builder: (context, state) => const WeatherMainScreen(),
+    //   redirect: (context, state) async {
+    //     bool isPermissionGranted = await LocationService.isLocationPermissionGranted();
+    //     if (isPermissionGranted) {
+    //       return RoutePaths.weatherMainPage; // No redirection, proceed to WeatherMainScreen
+    //     } else {
+    //       // Location permission is not granted, redirect to another page
+    //       return "/"; // Redirect to the initial location
+    //     }
+    //   },
+    // ),
   ],
   errorBuilder: (context, state) => const ErrorPage(),
 );

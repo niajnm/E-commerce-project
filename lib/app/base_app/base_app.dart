@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:weather_assesment/app/core/base/app_theme_data.dart';
-import 'package:weather_assesment/app/core/base/theme.dart';
-import 'package:weather_assesment/app/core/route/go_route_service.dart';
-import 'package:weather_assesment/app/core/values/app_language.dart';
-import 'package:weather_assesment/app/data/local/preference/preference_manager.dart';
-import 'package:weather_assesment/app/data/local/preference/preference_manager_impl.dart';
-import 'package:weather_assesment/app/module/weather/controller/weather_view_model.dart';
+import 'package:e_commerce/app/core/base/app_theme_data.dart';
+import 'package:e_commerce/app/core/base/theme.dart';
+import 'package:e_commerce/app/core/route/go_route_service.dart';
+import 'package:e_commerce/app/core/values/app_language.dart';
+import 'package:e_commerce/app/data/local/preference/preference_manager.dart';
+import 'package:e_commerce/app/data/local/preference/preference_manager_impl.dart';
+import 'package:e_commerce/app/module/weather/controller/weather_view_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:weather_assesment/app/utils/location/location_service.dart';
+import 'package:e_commerce/app/utils/location/location_service.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 

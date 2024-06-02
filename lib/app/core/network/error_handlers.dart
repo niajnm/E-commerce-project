@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'package:get/get_connect/http/src/status/http_status.dart';
 import 'package:dio/dio.dart';
-import 'package:weather_assesment/flavors/build_config.dart';
+import 'package:e_commerce/flavors/build_config.dart';
 
 import 'exceptions/api_exception.dart';
 import 'exceptions/app_exception.dart';

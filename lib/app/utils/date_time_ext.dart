@@ -1,6 +1,6 @@
-import 'package:weather_assesment/app/base_app/base_app.dart';
-import 'package:weather_assesment/app/utils/date_parser.dart';
-import 'package:weather_assesment/app/utils/int_ext.dart';
+import 'package:e_commerce/app/base_app/base_app.dart';
+import 'package:e_commerce/app/utils/date_parser.dart';
+import 'package:e_commerce/app/utils/int_ext.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:intl/intl.dart';

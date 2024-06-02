@@ -1,8 +1,8 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:weather_assesment/app/core/network/dio_Singleton.dart';
-import 'package:weather_assesment/app/core/network/error_handlers.dart';
-import 'package:weather_assesment/app/core/network/exceptions/base_exception.dart';
+import 'package:e_commerce/app/core/network/dio_Singleton.dart';
+import 'package:e_commerce/app/core/network/error_handlers.dart';
+import 'package:e_commerce/app/core/network/exceptions/base_exception.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../../flavors/build_config.dart';

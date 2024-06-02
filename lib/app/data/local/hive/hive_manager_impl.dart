@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:weather_assesment/app/data/local/hive/hive_manager.dart';
+import 'package:e_commerce/app/data/local/hive/hive_manager.dart';
 
 class HiveManagerImpl implements HiveManager {
   final Box _box;

@@ -1,5 +1,5 @@
 import 'package:hive/hive.dart';
-import 'package:weather_assesment/app/data/remote/weather_remote/model/weather_response_model.dart';
+import 'package:e_commerce/app/data/remote/weather_remote/model/weather_response_model.dart';
 
 class WeatherResponseModelAdapter extends TypeAdapter<WeatherResponseModel> {
   @override

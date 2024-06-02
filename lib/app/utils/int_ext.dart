@@ -1,4 +1,4 @@
-import 'package:weather_assesment/app/utils/constants.dart';
+import 'package:e_commerce/app/utils/constants.dart';
 import 'package:intl/intl.dart';
 
 extension IntExtenstions on int {
