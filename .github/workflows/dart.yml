@@ -1,0 +1,60 @@
+name: Flutter CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+    name: Build Flutter App
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-java@v3
+      with:
+        java-version: '12.x'
+    - uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.7.3'
+    - run: flutter pub get
+    - run: flutter analyze
+    - run: flutter test
+    - run: flutter build apk --split-per-abi
+      
+  deploy-dev:
+    name: Deploy to Dev Environment
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-java@v3
+      with:
+        java-version: '12.x'
+    - uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.7.3'
+    - run: flutter pub get
+    - run: flutter build apk --flavor dev lib/main_dev.dart
+    # Upload or deploy the dev artifact here
+    
+  deploy-prod:
+    name: Deploy to Production
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-java@v3
+      with:
+        java-version: '12.x'
+    - uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.7.3'
+    - run: flutter pub get
+    - run: flutter build apk --flavor lib/main_prod --release 
+    # Upload or deploy the prod artifact here

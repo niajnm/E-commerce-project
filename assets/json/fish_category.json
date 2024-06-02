@@ -1,0 +1,219 @@
+[
+    {
+      "id": 1,
+      "title_bn": "কার্পজাতীয়",
+      "title_en": "Carp",
+      "image": "assets/images/dummy/carpFish.png",
+      "stage": [
+        {
+          "id": 1,
+          "name": "নার্সারি ফিড",
+          "weight": "০.২-১০ গ্রাম",
+          "proteinNeed": 28.00,
+          "defaultItems": [2, 3, 5, 10, 11]
+        },
+        {
+          "id": 2,
+          "name": "স্টার্টার ফিড",
+          "weight": "১১-১০০ গ্রাম",
+          "proteinNeed": 25.00,
+          "defaultItems": [2, 3, 5, 10, 11]
+        },
+        {
+          "id": 3,
+          "name": "গ্রোয়ার ফিড",
+          "weight": "১০১-৫০০+ গ্রাম",
+          "proteinNeed": 22.00,
+          "defaultItems": [2, 3, 4, 10, 11]
+        },
+        {
+          "id": 4,
+          "name": "নিজের তৈরি ফিড",
+          "weight": "",
+          "proteinNeed": null,
+          "defaultItems": [3, 5]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title_bn": "ক্যাটফিশ",
+      "title_en": "Catfish",
+      "image": "assets/images/dummy/catFish.png",
+      "stage": [
+        {
+          "id": 1,
+          "name": "নার্সারি ফিড",
+          "weight": "০.২-৫ গ্রাম",
+          "proteinNeed": 30.00,
+          "defaultItems": [2, 3, 4, 10, 11, 12]
+        },
+        {
+          "id": 2,
+          "name": "স্টার্টার ফিড",
+          "weight": "০৬-৩০ গ্রাম",
+          "proteinNeed": 29.00,
+          "defaultItems": [2, 3, 5, 10, 12]
+        },
+        {
+          "id": 3,
+          "name": "গ্রোয়ার ফিড",
+          "weight": "৩১-১০০+ গ্রাম",
+          "proteinNeed": 25.00,
+          "defaultItems": [2, 5, 3, 11, 8]
+        },
+        {
+          "id": 4,
+          "name": "নিজের তৈরি ফিড",
+          "weight": "",
+          "proteinNeed": null,
+          "defaultItems": [3, 5]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title_bn": "তেলাপিয়া",
+      "title_en": "Tilapia",
+      "image": "assets/images/dummy/telapiaFish.png",
+      "stage": [
+        {
+          "id": 1,
+          "name": "নার্সারি ফিড",
+          "weight": "০.১-১০ গ্রাম",
+          "proteinNeed": 30.00,
+          "defaultItems": [2, 5, 3, 10, 11, 12]
+        },
+        {
+          "id": 2,
+          "name": "স্টার্টার ফিড",
+          "weight": "১১-২৫ গ্রাম",
+          "proteinNeed": 27.50,
+          "defaultItems": [2, 3, 5, 10, 11]
+        },
+        {
+          "id": 3,
+          "name": "গ্রোয়ার ফিড",
+          "weight": "২৬-২০০+ গ্রাম",
+          "proteinNeed": 25.00,
+          "defaultItems": [2, 5, 3, 10, 12]
+        },
+        {
+          "id": 4,
+          "name": "নিজের তৈরি ফিড",
+          "weight": "",
+          "proteinNeed": null,
+          "defaultItems": [3, 5]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title_bn": "পাঙ্গাস",
+      "title_en": "Pangas",
+      "image": "assets/images/dummy/pangasFish.png",
+      "stage": [
+        {
+          "id": 1,
+          "name": "নার্সারি ফিড",
+          "weight": "০.১-৩ গ্রাম",
+          "proteinNeed": 32.00,
+          "defaultItems": [2, 5, 3, 10, 11, 12]
+        },
+        {
+          "id": 2,
+          "name": "স্টার্টার ফিড",
+          "weight": "৪-৩০ গ্রাম",
+          "proteinNeed": 29.00,
+          "defaultItems": [2, 5, 3, 10, 11]
+        },
+        {
+          "id": 3,
+          "name": "গ্রোয়ার ফিড",
+          "weight": "৩১-৯০০+ গ্রাম",
+          "proteinNeed": 25.00,
+          "defaultItems": [2, 5, 3, 11, 8]
+        },
+        {
+          "id": 4,
+          "name": "নিজের তৈরি ফিড",
+          "weight": "",
+          "proteinNeed": null,
+          "defaultItems": [3, 5]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title_bn": "গলদা চিং",
+      "title_en": "Lobster",
+      "image": "assets/images/dummy/golda.png",
+      "stage": [
+        {
+          "id": 1,
+          "name": "নার্সারি ফিড",
+          "weight": "০.২-২.৫ গ্রাম",
+          "proteinNeed": 32.00,
+          "defaultItems": [2, 5, 3, 10, 11, 12]
+        },
+        {
+          "id": 2,
+          "name": "স্টার্টার ফিড",
+          "weight": "২.৬-৩৩ গ্রাম",
+          "proteinNeed": 30.50,
+          "defaultItems": [2, 5, 3, 10, 11, 8]
+        },
+        {
+          "id": 3,
+          "name": "গ্রোয়ার ফিড",
+          "weight": "৩৪-৭০+ গ্রাম",
+          "proteinNeed": 29.00,
+          "defaultItems": [2, 5, 3, 10, 11]
+        },
+        {
+          "id": 4,
+          "name": "নিজের তৈরি ফিড",
+          "weight": "",
+          "proteinNeed": null,
+          "defaultItems": [3, 5]
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title_bn": "বাগদা চিংড়ি",
+      "title_en": "Crayfish",
+      "image": "assets/images/dummy/bagda.png",
+      "stage": [
+        {
+          "id": 1,
+          "name": "নার্সারি ফিড",
+          "weight": "০.২-১০ গ্রাম",
+          "proteinNeed": 40.00,
+          "defaultItems": [2, 5, 3, 10, 11, 8, 12, 7]
+        },
+        {
+          "id": 2,
+          "name": "স্টার্টার ফিড",
+          "weight": "৭-১৬ গ্রাম",
+          "proteinNeed": 35.00,
+          "defaultItems": [2, 5, 3, 10, 11, 8, 12, 7]
+        },
+        {
+          "id": 3,
+          "name": "গ্রোয়ার ফিড",
+          "weight": "১৭-৫০+ গ্রাম",
+          "proteinNeed": 32.00,
+          "defaultItems": [2, 5, 3, 10, 11, 8, 12, 7]
+        },
+        {
+          "id": 4,
+          "name": "নিজের তৈরি ফিড",
+          "weight": "",
+          "proteinNeed": null,
+          "defaultItems": [3, 5]
+        }
+      ]
+    }
+  ]
+  

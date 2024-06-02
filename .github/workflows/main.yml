@@ -1,0 +1,84 @@
+on:
+  pull_request:
+    branches:
+      - main 
+      - master
+  push:
+    branches:
+      - main
+      - master
+      - develop
+name: "Build & Release"
+# name: CI/CD  # Name of the workflow
+
+jobs:
+  build_dev:
+    runs-on: ubuntu-latest  # Use an Ubuntu runner for the job
+    
+    steps:
+      - name: Checkout Repository  # Check out the source code from the repository
+        uses: actions/checkout@v2  # Use the GitHub Actions checkout action
+      - name: actions/setup java 
+        uses: actions/setup-java@v2
+        with:
+          java-version: '12.x'
+          distribution: 'adopt'
+
+      - name: Setup Flutter  # Set up Flutter SDK
+        uses: subosito/flutter-action@v2  # Use the Flutter action
+        with:
+          channel: 'stable'  # Specify Flutter version
+
+      - name: Install Dependencies  # Install Flutter dependencies
+        run: flutter pub get  # Run 'flutter pub get' command to fetch dependencies
+
+      - name: run app localization command   # Run tests
+        run: flutter gen-l10n  # Execute unit tests, widget tests, and integration tests
+
+      - name: Build Dev APK  # Build APK for main_dev flavor 
+        run: flutter build apk --flavor dev lib/main_dev.dart  # Build the APK file for main_dev flavor
+             
+      - name: Upload dev APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: dev-apk
+          file: build/app/outputs/flutter-apk/app-main_dev.apk
+          path: build/app/outputs/flutter-apk/app-main_dev.apk
+
+      # - name: Push to Releases
+      #   uses: ncipollo/release-action@v1
+      #   with:
+      #     artifacts: "build/app/outputs/apk/release/*"
+      #     tag: v0.0.1
+      #     token: ${{ secrets.TOKEN }}  
+ 
+
+  # build_prod:
+  #   runs-on: ubuntu-latest  # Use an Ubuntu runner for the job
+
+  #   steps:
+  #     - name: Checkout Repository  # Check out the source code from the repository
+  #       uses: actions/checkout@v2  # Use the GitHub Actions checkout action
+  #     - name: actions/setup java 
+  #       uses: actions/setup-java@v2
+  #       with:
+  #         java-version: '12.x'
+  #         distribution: 'adopt'
+
+  #     - name: Setup Flutter  # Set up Flutter SDK
+  #       uses: subosito/flutter-action@v2  # Use the Flutter action
+  #       with:
+  #         channel: 'stable'  # Specify Flutter version
+
+  #     - name: Install Dependencies  # Install Flutter dependencies
+  #       run: flutter pub get  # Run 'flutter pub get' command to fetch dependencies
+  #     # - name: run app localization command 
+  #     #   run flutter gen-l10n 
+      
+  #     - name: run app localization command   # Run tests
+  #       run: flutter gen-l10n  #
+  #     - name: Run Tests  # Run tests
+  #       run: flutter test  # Execute unit tests, widget tests, and integration tests
+
+  #     - name: Build Prod APK  # Build APK for main_prod flavor
+  #       run: flutter build apk --flavor prod lib/main_prod.dart --release # Build the APK file for main_prod flavor

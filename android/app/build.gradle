@@ -1,0 +1,166 @@
+import java.util.regex.Matcher
+import java.util.regex.Pattern
+
+
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+ def getCurrentFlavor() {
+
+      String  tskReqStr = gradle.getStartParameter().getTaskRequests().toString()
+
+    Pattern pattern
+    println(tskReqStr)
+    if( tskReqStr.contains( "assemble" ) )
+        pattern = Pattern.compile("assemble(\\w+)(Release|Debug)")
+    else if( tskReqStr.contains("bundle") )
+        pattern = Pattern.compile("bundle(\\w+)(Release|Debug)")
+    else
+        pattern = Pattern.compile("generate(\\w+)(Release|Debug)")
+
+    Matcher matcher = pattern.matcher( tskReqStr )
+
+    if( matcher.find() )
+        return matcher.group(1).toLowerCase()
+    else
+    {
+        println "NO MATCH FOUND"
+        return ""
+    }
+}
+
+
+android {
+    namespace "com.example.weather_assesment"
+    compileSdkVersion 34
+    ndkVersion flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        applicationId "com.example.weather_assesment"
+        minSdkVersion 23
+        targetSdkVersion 34
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
+
+        signingConfigs {
+          beta{
+             keyAlias localProperties['keyAlias']
+             keyPassword localProperties['keyPassword']
+             storeFile localProperties['storeFile'] ? file(localProperties['storeFile']) : null
+             storePassword localProperties['storePassword']
+          }
+
+          prod {
+            keyAlias localProperties['keyAlias']
+            keyPassword localProperties['keyPassword']
+            storeFile localProperties['storeFile'] ? file(localProperties['storeFile']) : null
+            storePassword localProperties['storePassword']
+        }
+        //   prod {
+        //      keyAlias keystoreProperties['keyAlias']
+        //      keyPassword keystoreProperties['keyPassword']
+        //      storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+        //      storePassword keystoreProperties['storePassword']
+        //   }
+    }
+
+
+   buildTypes {
+    
+       debug {
+            debuggable true
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+       beta {
+           debuggable true
+           minifyEnabled false
+           shrinkResources false
+           signingConfig signingConfigs.debug
+           proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+       } 
+
+       release {
+           debuggable false
+           minifyEnabled true
+           shrinkResources true
+           signingConfig signingConfigs.debug
+           proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+       }
+
+   }
+
+
+
+    flavorDimensions "default"
+    productFlavors {
+        dev {
+            versionCode 1
+            versionName "1.0.0-beta"
+            resValue "string", "app_name", "Flutter Dev"
+            dimension "default"
+            applicationIdSuffix ".dev"
+           // manifestPlaceholders = [MAPS_API_KEY: localProperties.getProperty('MAPS_API_KEY_DEV')]
+        }
+        
+        prod {
+            versionCode 1
+            versionName "1.0.0"
+            resValue "string", "app_name", "Flutter Craft"
+            dimension "default"
+            
+            //manifestPlaceholders = [MAPS_API_KEY: localProperties.getProperty('MAPS_API_KEY_PROD')]
+        }
+    }
+
+
+}
+
+
+
+
+
+flutter {
+    source '../..'
+    target "lib/main_" + getCurrentFlavor() + ".dart"
+}
+
+dependencies {}
