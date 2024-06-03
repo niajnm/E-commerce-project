@@ -9,14 +9,14 @@ import 'package:provider/provider.dart';
 import 'package:e_commerce/app/core/values/app_values.dart';
 import 'package:e_commerce/app/core/values/image_values.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegistrationScreen extends StatefulWidget {
+  const RegistrationScreen({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegistrationScreenState extends State<RegistrationScreen> {
   final formGlobalKey = GlobalKey<FormState>();
 
   var userMail;
@@ -47,6 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                 //    _bannerLogo(),
                 // _welcomeBackTitle(),
                 // _enterDetailsTitle(),
+                _nameInput(),
                 _emailInput(),
                 // Visibility(
                 //   visible: false,
@@ -57,6 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                 //   ),
                 // ),
                 _passwordInput(),
+                _confirmPasswordInput(),
 
                 SizedBox(
                   width: double.infinity,
@@ -120,6 +122,14 @@ class _LoginPageState extends State<LoginPage> {
       (value) => userMail = value);
   // (value) => setState(() => userMail = value));
 
+  Widget _nameInput() => TextFieldWithLabel(
+      false,
+      'Name',
+      'Name',
+      readOnly: false,
+      enableTitle: false,
+      (value) => userMail = value);
+
   Widget _passwordInput() => TextFieldWithLabel(
       false,
       'Password',
@@ -134,6 +144,15 @@ class _LoginPageState extends State<LoginPage> {
   //         useFilledBtn: true, isDisabled: isButtonDisabled(), () async {
 
   //     });
+
+  Widget _confirmPasswordInput() => TextFieldWithLabel(
+      false,
+      'Password',
+      '••••••••',
+      password: true,
+      readOnly: false,
+      enableTitle: false,
+      (value) => userPassword = value);
 
   _loginPost() {
     if (formGlobalKey.currentState!.validate()) {

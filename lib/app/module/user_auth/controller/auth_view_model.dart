@@ -23,41 +23,7 @@ class UserAuthViewModel extends ChangeNotifier {
 
   WeatherUIModel? weatherData;
 
-  checklocation() async {
-    Position? currentPosition =
-        await LocationService.getLocationWithPermissionCheck();
-    if (currentPosition != null) {
-      setCurrentLocation(currentPosition.latitude, currentPosition.longitude);
-    } else {
-      checklocation();
-      // Handle the case when the location couldn't be obtained
-    }
-  }
-
-  getWeather() async {
-    await checklocation();
-
-    if (getLat != null) {
-      var queryParams =
-          WeatherParams(lat: getLat.toString(), lon: getLon.toString());
-      //  cityName = await LocationSer.getCityName(getLat, getLon);
-
-      WeatherResponseModel response =
-          await _weatherRepository.getSevenDaysWeather(queryParams);
-
-      WeatherUIModel weatherUIModel =
-          WeatherUIModel.fromWeatherResponse(response);
-
-      weatherData = weatherUIModel;
-      cityName = weatherData?.timezone;
-      notifyListeners();
-    } else {
-      await checklocation();
-      getWeather();
-    }
-  }
-
-  Future<LoginResponseModel> LogInApiService(userName, userPassword) async {
+  Future<LoginResponseModel> logInApiService(userName, userPassword) async {
     final userRepository = serviceLocator<PreferenceManager>();
 
     LoginPostParams param =
@@ -81,6 +47,7 @@ class UserAuthViewModel extends ChangeNotifier {
       return response;
     }
   }
+
   Future<LoginResponseModel> userResistation(userName, userPassword) async {
     final userRepository = serviceLocator<PreferenceManager>();
 
@@ -105,15 +72,4 @@ class UserAuthViewModel extends ChangeNotifier {
       return response;
     }
   }
-
-  var _currentLat;
-  var _currentLon;
-
-  void setCurrentLocation(Lat, Lon) {
-    _currentLat = Lat;
-    _currentLon = Lon;
-  }
-
-  get getLat => _currentLat;
-  get getLon => _currentLon;
 }

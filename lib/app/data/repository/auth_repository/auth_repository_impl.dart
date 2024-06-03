@@ -5,14 +5,18 @@ class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteSource _remoteSource;
   AuthRepositoryImpl(this._remoteSource);
 
-
   @override
   Future<dynamic> userLogin(queryParams) {
-   return _remoteSource.userLogin(queryParams);
+    return _remoteSource.userLogin(queryParams);
   }
-  
+
   @override
   Future userRegistration(queryParams) {
-     return _remoteSource.userRegistration(queryParams);
+    return _remoteSource.userRegistration(queryParams);
+  }
+
+  @override
+  Future updateProfile(queryParams) {
+    return _remoteSource.updateProfile(queryParams);
   }
 }
