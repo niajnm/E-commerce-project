@@ -16,7 +16,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 void main() async {
   EnvConfig devConfig = EnvConfig(
     appName: "Flutter Prod",
-    baseUrl: "https://api.openweathermap.org/",
+    baseUrl: "https://apptest.dokandemo.com/",
     shouldCollectCrashLog: true,
   );
 

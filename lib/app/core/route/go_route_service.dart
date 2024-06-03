@@ -1,36 +1,38 @@
+import 'dart:developer';
+
+import 'package:e_commerce/app/core/services/service_locator.dart';
+import 'package:e_commerce/app/data/local/preference/preference_manager.dart';
 import 'package:e_commerce/app/module/user_auth/view/LoginPage.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/app/core/route/route_paths.dart';
 import 'package:e_commerce/app/module/weather/view/weather_main_screen.dart';
 import 'package:go_router/go_router.dart';
-import 'package:e_commerce/app/utils/location/location_service.dart';
 
 // GoRouter configuration
 class GoRouterService {
   bool userIsNotLoggedIn = false;
 
-static final router = GoRouter(
-  initialLocation: '/',
-  routes: [
+  static final router = GoRouter(
+    redirect: (context, state) async {
+      final userRepository = serviceLocator<PreferenceManager>();
+      var token = await userRepository.getString('token');
 
+      log('token has $token');
 
-    GoRoute(path: '/' ,    builder: (context, state) => const LoginPage() ),
-    // GoRoute(
-    //   path: RoutePaths.weatherMainPage,
-    //   builder: (context, state) => const WeatherMainScreen(),
-    //   redirect: (context, state) async {
-    //     bool isPermissionGranted = await LocationService.isLocationPermissionGranted();
-    //     if (isPermissionGranted) {
-    //       return RoutePaths.weatherMainPage; // No redirection, proceed to WeatherMainScreen
-    //     } else {
-    //       // Location permission is not granted, redirect to another page
-    //       return "/"; // Redirect to the initial location
-    //     }
-    //   },
-    // ),
-  ],
-  errorBuilder: (context, state) => const ErrorPage(),
-);
+      // if (token == null || token == "") return '/';
+      // if (token != null || token != "") return RoutePaths.weatherMainPage;
+      return null;
+    },
+    initialLocation: '/',
+    routes: [
+      GoRoute(path: '/', builder: (context, state) => const LoginPage()),
+      GoRoute(
+          path: RoutePaths.weatherMainPage,
+          builder: (context, state) => const WeatherMainScreen()),
+      //   GoRoute(
+    ],
+    errorBuilder: (context, state) => const ErrorPage(),
+  );
 }
 
 class ErrorPage extends StatelessWidget {

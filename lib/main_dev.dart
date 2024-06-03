@@ -16,7 +16,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 void main() async {
   EnvConfig devConfig = EnvConfig(
     appName: "Flutter Dev",
-    baseUrl: "https://api.openweathermap.org/",
+    baseUrl: "https://apptest.dokandemo.com/",
     shouldCollectCrashLog: true,
   );
 
@@ -39,8 +39,8 @@ void main() async {
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: AppColors.appBarColor,
-      systemNavigationBarColor: AppColors.appBarColor2));
+      statusBarColor: AppColors.colorWhite,
+      systemNavigationBarColor: AppColors.colorWhite));
   runApp(MultiProvider(
       providers: ProviderPath.providersList, child: const BaseApp()));
 }

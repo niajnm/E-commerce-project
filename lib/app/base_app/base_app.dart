@@ -89,6 +89,6 @@ class _BaseAppState extends State<BaseApp> {
 
     return isDarkMode
         ? AppThemeData.getDarkTheme(appLanguage)
-        : AppThemeData.lightThemeFlex(appLanguage);
+        : AppThemeData.getLightTheme(appLanguage);
   }
 }

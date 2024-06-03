@@ -1,7 +1,11 @@
 import 'package:e_commerce/app/data/local/preference/preference_manager.dart';
 import 'package:e_commerce/app/data/local/preference/preference_manager_impl.dart';
+import 'package:e_commerce/app/data/remote/remote-auth/auth_remote_source.dart';
+import 'package:e_commerce/app/data/remote/remote-auth/auth_remote_source_impl.dart';
 import 'package:e_commerce/app/data/remote/weather_remote/weather_remote_source.dart';
 import 'package:e_commerce/app/data/remote/weather_remote/weather_remote_source_impl.dart';
+import 'package:e_commerce/app/data/repository/auth_repository/auth_repository.dart';
+import 'package:e_commerce/app/data/repository/auth_repository/auth_repository_impl.dart';
 import 'package:e_commerce/app/data/repository/weather_repository/weather_repository.dart';
 import 'package:e_commerce/app/data/repository/weather_repository/weather_repository_impl.dart';
 import 'package:get_it/get_it.dart';
@@ -19,5 +23,10 @@ class ServiceLocator {
 
     serviceLocator.registerLazySingleton<WeatherRepository>(
         () => WeatherRepositoryImpl());
+
+    serviceLocator
+        .registerLazySingleton<AuthRemoteSource>(() => AuthRemoteSourceImpl());
+    serviceLocator
+        .registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(serviceLocator()));
   }
 }
