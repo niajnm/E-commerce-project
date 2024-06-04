@@ -1,4 +1,4 @@
-import 'package:e_commerce/app/data/remote/remote-auth/auth_remote_source.dart';
+import 'package:e_commerce/app/data/remote/remote_auth/auth_remote_source.dart';
 import 'package:e_commerce/app/data/repository/auth_repository/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {

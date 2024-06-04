@@ -1,11 +1,11 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:e_commerce/app/data/remote/end_point_api.dart';
-import 'package:e_commerce/app/data/remote/remote-auth/api_model/LoginResponseModel.dart';
-import 'package:e_commerce/app/data/remote/remote-auth/api_model/login_post_param.dart';
-import 'package:e_commerce/app/data/remote/remote-auth/api_model/registration_post_param.dart';
-import 'package:e_commerce/app/data/remote/remote-auth/api_model/registration_res_model.dart';
-import 'package:e_commerce/app/data/remote/remote-auth/auth_remote_source.dart';
+import 'package:e_commerce/app/data/remote/remote_auth/api_model/LoginResponseModel.dart';
+import 'package:e_commerce/app/data/remote/remote_auth/api_model/login_post_param.dart';
+import 'package:e_commerce/app/data/remote/remote_auth/api_model/registration_post_param.dart';
+import 'package:e_commerce/app/data/remote/remote_auth/api_model/registration_res_model.dart';
+import 'package:e_commerce/app/data/remote/remote_auth/auth_remote_source.dart';
 
 import '../../../core/base/base_remote_source.dart';
 
@@ -16,7 +16,7 @@ class AuthRemoteSourceImpl extends BaseRemoteSource
     //   log('post data $queryParams');
 
     var endpoint = registrationUrl;
-    var dioCall = dioCli.get(endpoint, queryParameters: queryParams.toJson());
+    var dioCall = dioCli.post(endpoint, data: queryParams.toJson());
 
     try {
       return callApiWithErrorParser(dioCall)

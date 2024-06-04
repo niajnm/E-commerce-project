@@ -51,12 +51,12 @@ class _TextFieldWithLabelState extends State<TextFieldWithLabel> {
             child: FormLabel(widget.labelText, widget.isRequired)),
         Padding(
           padding: const EdgeInsets.only(bottom: AppValues.padding_24).r,
-          child: Card(
-            elevation: 5,
-            child: Container(
-                decoration: widget.readOnly ? textBoxDecoration() : null,
-                width: widget.width,
-                child: Center(
+          child: Container(
+              decoration: widget.readOnly ? textBoxDecoration() : null,
+              width: widget.width,
+              child: Center(
+                child: Card(
+                  elevation: 4,
                   child: TextFormField(
                       //  clipBehavior: Clip.none,
                       controller: widget.controller,
@@ -87,9 +87,9 @@ class _TextFieldWithLabelState extends State<TextFieldWithLabel> {
                                 vertical: AppValues.height_50.h / 3.5,
                                 horizontal: 8.0)
                             .r,
-
+                            
                         prefixIcon: widget.prefixIcon == ''
-                            ? Icon(Icons.mail)
+                            ? Icon(Icons.lock_outline_rounded)
                             : SvgPicture.asset(widget.prefixIcon),
                         suffixIcon: widget.password == true
                             ? GestureDetector(
@@ -118,8 +118,8 @@ class _TextFieldWithLabelState extends State<TextFieldWithLabel> {
                         // hintStyle: hintText(
                         //     widget.readOnly ? AppColors.neutral600 : null)
                       )),
-                )),
-          ),
+                ),
+              )),
         ),
       ],
     );

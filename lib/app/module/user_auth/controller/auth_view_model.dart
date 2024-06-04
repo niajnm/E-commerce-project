@@ -2,10 +2,10 @@ import 'dart:developer';
 
 import 'package:e_commerce/app/core/services/service_locator.dart';
 import 'package:e_commerce/app/data/local/preference/preference_manager.dart';
-import 'package:e_commerce/app/data/remote/remote-auth/api_model/LoginResponseModel.dart';
-import 'package:e_commerce/app/data/remote/remote-auth/api_model/login_post_param.dart';
-import 'package:e_commerce/app/data/remote/remote-auth/api_model/registration_post_param.dart';
-import 'package:e_commerce/app/data/remote/remote-auth/api_model/registration_res_model.dart';
+import 'package:e_commerce/app/data/remote/remote_auth/api_model/LoginResponseModel.dart';
+import 'package:e_commerce/app/data/remote/remote_auth/api_model/login_post_param.dart';
+import 'package:e_commerce/app/data/remote/remote_auth/api_model/registration_post_param.dart';
+import 'package:e_commerce/app/data/remote/remote_auth/api_model/registration_res_model.dart';
 import 'package:e_commerce/app/data/repository/auth_repository/auth_repository.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -39,12 +39,12 @@ class UserAuthViewModel extends ChangeNotifier {
   }
 
   Future<RegistrationResponseModel> userRegistration(
-      userName, userPassword) async {
+      userName, userMail, userPassword, confirmPass) async {
     RegistrationPostParam param = RegistrationPostParam(
-        username: 'username', email: 'n00@gmail.com', password: 'password');
+        username: userName, email: userMail, password: confirmPass);
     log('login param $userName $userPassword');
     RegistrationResponseModel response =
-        await _authenticationRepository.userLogin(param);
+        await _authenticationRepository.userRegistration(param);
 
     log('login param $userName $userPassword');
 

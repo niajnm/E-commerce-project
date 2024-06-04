@@ -1,4 +1,4 @@
-<h1>weather Assessment</h1>
+<h1>E-commerce</h1>
 
 <p>This project follows a structured architecture inspired by MVVM (Model-View-ViewModel) principles to enhance maintainability and scalability. It is organized into different directories, each serving a specific purpose.</p>
 
@@ -52,10 +52,9 @@ lib
 <h2>Task Description:</h2>
 
 <ul>
-  <li><strong>Weather API Integration:</strong> Retrieve a data from the open weather  API.</li>
-  <li><strong>Weather Forecast:</strong> Display the forecast for the next 7 days, including the date, weather icon, and temperature..</li>
+  <li><strong>:</strong> .</li>
+  <li><strong>:</strong> .</li>
   <li><strong>Local Database (Hive):</strong> Store the fetched data locally and show to view when internet is off using Hive.</li>
-  <li><strong>Geolocator</strong> Implement location services to automatically determine the user's location (latitude and longitude).</li>
     <li><strong>Provider for State Management:</strong> Utilize the Provider package for state management.</li>
   <li><strong>Service locator:</strong> Decouple the interface(abstract base class) from a concreate implementation.</li>
     <li><strong>Singleton:</strong> Dio and env setup implemented in singleton.</li>
@@ -97,7 +96,7 @@ lib
 <ol>
   <li>Clone the repository:</li>
 
-  <pre><code>git clone https://github.com/niajnm/Weather-Assessment.git</code></pre>
+  <!-- <pre><code>git clone https://github.com/niajnm/Weather-Assessment.git</code></pre> -->
 
   <li>Switch to the appropriate branch (e.g., <code>main</code>):</li>
 
