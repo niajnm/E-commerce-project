@@ -9,13 +9,18 @@ class HomeViewModel extends ChangeNotifier {
   final ProductListRepository _repository =
       serviceLocator<ProductListRepository>();
 
-  Future<List<ProductDataModel>> productData() async {
+  List<ProductDataModel> _products = [];
+
+  List<ProductDataModel> get getProducts => _products;
+
+  productData() async {
     List<ProductDataModel> response = await _repository.fetchProductData();
 
     log('productData param  ${response[1].name}');
 
     if (response.isNotEmpty) {
-      return response;
+      _products = [];
+      _products = response;
     } else {
       // var error = LoginResponseModel(
       //     statusCode: response['status_code'],

@@ -27,15 +27,15 @@ class GoRouterService {
     },
     initialLocation: '/',
     routes: [
-     // GoRoute(path: '/', builder: (context, state) => const LoginPage()),
+      GoRoute(path: '/', builder: (context, state) => HomePage()),
       GoRoute(
           path: RoutePaths.registrationScreen,
           builder: (context, state) => const RegistrationScreen()),
       GoRoute(
           path: RoutePaths.weatherMainPage,
           builder: (context, state) => const WeatherMainScreen()),
-      GoRoute(
-          path: '/', builder: (context, state) => HomePage()),
+      // GoRoute(
+      //     path: RoutePaths.homePage, builder: (context, state) => HomePage()),
       //   GoRoute(
     ],
     errorBuilder: (context, state) => const ErrorPage(),

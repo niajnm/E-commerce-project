@@ -52,6 +52,7 @@ class _TextFieldWithLabelState extends State<TextFieldWithLabel> {
         Padding(
           padding: const EdgeInsets.only(bottom: AppValues.padding_24).r,
           child: Container(
+              height: 60.h,
               decoration: widget.readOnly ? textBoxDecoration() : null,
               width: widget.width,
               child: Center(
@@ -87,7 +88,7 @@ class _TextFieldWithLabelState extends State<TextFieldWithLabel> {
                                 vertical: AppValues.height_50.h / 3.5,
                                 horizontal: 8.0)
                             .r,
-                            
+
                         prefixIcon: widget.prefixIcon == ''
                             ? Icon(Icons.lock_outline_rounded)
                             : SvgPicture.asset(widget.prefixIcon),

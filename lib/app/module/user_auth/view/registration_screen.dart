@@ -1,5 +1,4 @@
 import 'package:e_commerce/app/app_widgets/TextFieldWithLabel.dart';
-import 'package:e_commerce/app/app_widgets/input_textfield.dart';
 import 'package:e_commerce/app/core/route/route_paths.dart';
 import 'package:e_commerce/app/module/user_auth/controller/auth_view_model.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +21,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final formGlobalKey = GlobalKey<FormState>();
 
   var userMail;
-  var userName;
   var userPassword;
-  var confirmPassword;
+  var userName;
+  var confirmPass;
 
   void showToast(String message) {
     Fluttertoast.showToast(
@@ -48,7 +47,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-           
+                //    _bannerLogo(),
+                // _welcomeBackTitle(),
+                // _enterDetailsTitle(),
                 _nameInput(),
                 _emailInput(),
                 // Visibility(
@@ -66,11 +67,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                       onPressed: () {
-                        _signUpPost();
+                        _registrationPost();
                       },
-                      child: const Text('Sign up')),
+                      child: const Text('Login')),
                 )
-
+                // _logInSubmitButton(),
 
                 // _changePasswordField()
               ],
@@ -81,11 +82,48 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     );
   }
 
+  Widget _bannerLogo() => Row(
+        children: [
+          _appLogoBanner(),
+          // _appNameTitle()
+        ],
+      );
 
   Widget _appLogoBanner() => SvgPicture.asset(
         ImageValues.sunny_day_png,
         height: 48.h,
       );
+
+  // Widget _appNameTitle() => Padding(
+  //       padding: EdgeInsets.only(left: 10.0),
+  //       child: Text(
+  //         'spectrahexa',
+  //         style: context.resources.styles
+  //             .headline3(context.resources.colors.primary500),
+  //       ),
+  //     );
+
+  // Widget _welcomeBackTitle() => Padding(
+  //       padding: EdgeInsets.only(top: 1.0).r,
+  //       child: Text('welcomeBack',
+  //           style: context.resources.styles
+  //               .headline1(context.resources.colors.neutral600)),
+  //     );
+
+  // Widget _enterDetailsTitle() => Text(
+  //       'enterYourDetails',
+  //       style: context.resources.styles
+  //           .bodyText1(context.resources.colors.neutral500),
+  //     );
+
+  Widget _emailInput() => TextFieldWithLabel(
+      false,
+      'Email',
+      'Email',
+      readOnly: false,
+      enableTitle: false,
+      (value) => userMail = value);
+  // (value) => setState(() => userMail = value));
 
   Widget _nameInput() => TextFieldWithLabel(
       false,
@@ -95,21 +133,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       enableTitle: false,
       (value) => userName = value);
 
-  Widget _emailInput() => TextFieldWithLabel(
-      false,
-      'Email',
-      'Email',
-      validation: true,
-      readOnly: false,
-      enableTitle: false,
-      (value) => userMail = value);
-  // (value) => setState(() => userMail = value));
-
-
   Widget _passwordInput() => TextFieldWithLabel(
       false,
       'Password',
-      'Password',
+      '••••••••',
       password: true,
       readOnly: false,
       enableTitle: false,
@@ -121,44 +148,39 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   //     });
 
-    _loginField() => Builder(builder: (context) {
-        return InkWell(
-            onTap: () => context.go(RoutePaths.loginScreen),
-            child: const Text('Already have an account?'));
-      });
-
   Widget _confirmPasswordInput() => TextFieldWithLabel(
       false,
       'Password',
-      'Confirm Password',
+      '••••••••',
       password: true,
       readOnly: false,
       enableTitle: false,
-      (value) => confirmPassword = value);
+      (value) => confirmPass = value);
 
-  _signUpPost() {
+  _registrationPost() {
     if (formGlobalKey.currentState!.validate()) {
       formGlobalKey.currentState?.save();
 
       Provider.of<UserAuthViewModel>(context, listen: false)
-          .userRegistration( userName, userMail, userPassword, confirmPassword)
+          .userRegistration(userName, userMail, userPassword, confirmPass)
           .then((value) => {
-                // if (value.statusCode == 200)
-                //   {
-                //     Navigator.pushNamedAndRemoveUntil(
-                //         context, RouteVariable.homeRoute, (route) => false),
-                //   }
-                // else
-                //   {
-                //     Fluttertoast.showToast(
-                //         msg: value.message!,
-                //         toastLength: Toast.LENGTH_SHORT,
-                //         gravity: ToastGravity.CENTER,
-                //         timeInSecForIosWeb: 1,
-                //         backgroundColor: Colors.grey,
-                //         textColor: Color.fromARGB(255, 236, 234, 234),
-                //         fontSize: 16.0)
-                //   }
+                if (value.code == 200)
+                  {
+                    context.goNamed(RoutePaths.loginPath)
+                    // Navigator.pushNamedAndRemoveUntil(
+                    //     context, RoutePaths.loginPath, (route) => false),
+                  }
+                else
+                  {
+                    Fluttertoast.showToast(
+                        msg: value.message,
+                        toastLength: Toast.LENGTH_SHORT,
+                        gravity: ToastGravity.CENTER,
+                        timeInSecForIosWeb: 1,
+                        backgroundColor: Colors.grey,
+                        textColor: Color.fromARGB(255, 236, 234, 234),
+                        fontSize: 16.0)
+                  }
               });
     }
   }

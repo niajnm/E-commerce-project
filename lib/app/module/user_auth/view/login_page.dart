@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(),
+        //appBar: AppBar(),
         body: Form(
           key: formGlobalKey,
           child: Padding(
@@ -61,13 +61,16 @@ class _LoginPageState extends State<LoginPage> {
                 // ),
                 _passwordInput(),
 
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        _loginPost();
-                      },
-                      child: const Text('Login')),
+                Padding(
+                  padding: EdgeInsets.only(top: 70.h),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          _loginPost();
+                        },
+                        child: const Text('Login')),
+                  ),
                 ),
                 // _logInSubmitButton(),
                 _createAccField()
@@ -87,29 +90,31 @@ class _LoginPageState extends State<LoginPage> {
             child: const Text('Create an account'));
       });
 
-  Widget _topHeadSec() => Row(
-        children: [_appLogoBanner(), _loginTitle()],
+  Widget _appLogoBanner() => Padding(
+        padding: const EdgeInsets.only(top: 70.0).h,
+        child: SvgPicture.asset(
+          ImageValues.app_logo_svg,
+          height: 48.h,
+        ),
       );
 
-  Widget _appLogoBanner() => SvgPicture.asset(
-        ImageValues.app_logo_svg,
-        height: 48.h,
-      );
-
-  Widget _loginTitle() => const Padding(
-        padding: EdgeInsets.only(left: 10.0),
-        child: Text(
+  Widget _loginTitle() => Padding(
+        padding: EdgeInsets.only(top: 70.h),
+        child: const Text(
           'Sign in',
         ),
       );
 
-  Widget _emailInput() => TextFieldWithLabel(
-      false,
-      'Email',
-      'Email',
-      readOnly: false,
-      enableTitle: false,
-      (value) => userMail = value);
+  Widget _emailInput() => Padding(
+        padding: EdgeInsets.only(top: 40.h),
+        child: TextFieldWithLabel(
+            false,
+            'Email',
+            'Email',
+            readOnly: false,
+            enableTitle: false,
+            (value) => userMail = value),
+      );
   // (value) => setState(() => userMail = value));
 
   Widget _passwordInput() => TextFieldWithLabel(
