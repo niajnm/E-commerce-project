@@ -149,7 +149,6 @@ class RegistrationScreen extends StatelessWidget {
         height: 48.h,
       );
 
-
   Widget _emailInput() => TextFieldWithLabel(
       false,
       'Email',
@@ -170,7 +169,7 @@ class RegistrationScreen extends StatelessWidget {
   Widget _passwordInput() => TextFieldWithLabel(
       false,
       'Password',
-      '••••••••',
+      'Password',
       password: true,
       readOnly: false,
       enableTitle: false,
@@ -184,8 +183,8 @@ class RegistrationScreen extends StatelessWidget {
 
   Widget _confirmPasswordInput() => TextFieldWithLabel(
       false,
-      'Password',
-      '••••••••',
+      'Confirm password',
+      'Confirm password',
       password: true,
       readOnly: false,
       enableTitle: false,

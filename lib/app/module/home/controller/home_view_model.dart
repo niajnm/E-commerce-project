@@ -32,4 +32,23 @@ class HomeViewModel extends ChangeNotifier {
       return response;
     }
   }
+
+  void sortByRating() {
+    _products.sort((a, b) => b.rating.compareTo(a.rating));
+
+    notifyListeners();
+  }
+
+  void sortByBestSelling() {
+    // _products.sort((a, b) => b.totalSales.compareTo(a.totalSales));
+  }
+
+  void sortByPrice(bool ascending) {
+    if (ascending) {
+      _products.sort((a, b) => a.price.compareTo(b.price));
+    } else {
+      _products.sort((a, b) => b.price.compareTo(a.price));
+    }
+    notifyListeners();
+  }
 }

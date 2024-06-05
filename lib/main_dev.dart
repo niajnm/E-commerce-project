@@ -38,9 +38,9 @@ void main() async {
   await ServiceLocator.setUpServiceLocator();
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: AppColors.colorWhite,
-      systemNavigationBarColor: AppColors.colorWhite));
+  // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+  //     statusBarColor: AppColors.colorWhite,
+  //     systemNavigationBarColor: AppColors.colorWhite));
   runApp(MultiProvider(
       providers: ProviderPath.providersList, child: const BaseApp()));
 }

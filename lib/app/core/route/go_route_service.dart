@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:e_commerce/app/core/services/service_locator.dart';
 import 'package:e_commerce/app/data/local/preference/preference_manager.dart';
 import 'package:e_commerce/app/module/home/view/home_page.dart';
+import 'package:e_commerce/app/module/profile/view/profile_page.dart';
 import 'package:e_commerce/app/module/user_auth/view/login_page.dart';
 import 'package:e_commerce/app/module/user_auth/view/registration_screen.dart';
 import 'package:flutter/material.dart';
@@ -22,12 +23,16 @@ class GoRouterService {
       log('token has $token');
 
       // if (token == null || token == "") return '/';
-      // if (token != null || token != "") return RoutePaths.weatherMainPage;
+      // if (token != null || token != "") return RoutePaths.homePage;
       return null;
     },
     initialLocation: '/',
     routes: [
       GoRoute(path: '/', builder: (context, state) => HomePage()),
+      GoRoute(
+          path: RoutePaths.profileScreen,
+          builder: (context, state) => ProfileScreen()),
+
       GoRoute(
           path: RoutePaths.registrationScreen,
           builder: (context, state) => RegistrationScreen()),
