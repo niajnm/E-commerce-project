@@ -30,7 +30,7 @@ class GoRouterService {
       GoRoute(path: '/', builder: (context, state) => HomePage()),
       GoRoute(
           path: RoutePaths.registrationScreen,
-          builder: (context, state) => const RegistrationScreen()),
+          builder: (context, state) => RegistrationScreen()),
       GoRoute(
           path: RoutePaths.weatherMainPage,
           builder: (context, state) => const WeatherMainScreen()),

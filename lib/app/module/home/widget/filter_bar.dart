@@ -13,48 +13,50 @@ class FilterBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      color: Colors.white,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          GestureDetector(
-            onTap: onFilterTap,
-            child: Row(
+    return Card(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        color: Colors.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            GestureDetector(
+              onTap: onFilterTap,
+              child: Row(
+                children: [
+                  Icon(Icons.filter_list, color: Colors.grey[700]),
+                  SizedBox(width: 8),
+                  Text(
+                    'Filter',
+                    style: TextStyle(color: Colors.grey[700]),
+                  ),
+                ],
+              ),
+            ),
+            Row(
               children: [
-                Icon(Icons.filter_list, color: Colors.grey[700]),
-                SizedBox(width: 8),
                 Text(
-                  'Filter',
+                  'Sort by',
                   style: TextStyle(color: Colors.grey[700]),
                 ),
+                SizedBox(width: 8),
+                DropdownButton<String>(
+                  value: selectedSort,
+                  onChanged: onSortChange,
+                  items: <String>['Popularity', 'Price', 'Newest']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+                SizedBox(width: 8),
+                Icon(Icons.view_list, color: Colors.grey[700]),
               ],
             ),
-          ),
-          Row(
-            children: [
-              Text(
-                'Sort by',
-                style: TextStyle(color: Colors.grey[700]),
-              ),
-              SizedBox(width: 8),
-              DropdownButton<String>(
-                value: selectedSort,
-                onChanged: onSortChange,
-                items: <String>['Popularity', 'Price', 'Newest']
-                    .map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-              ),
-              SizedBox(width: 8),
-              Icon(Icons.view_list, color: Colors.grey[700]),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

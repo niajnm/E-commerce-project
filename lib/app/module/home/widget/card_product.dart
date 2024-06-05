@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductItemCard extends StatelessWidget {
   final String imageUrl;
@@ -39,7 +40,7 @@ class ProductItemCard extends StatelessWidget {
             child: Image.network(
               imageUrl,
               fit: BoxFit.cover,
-              height: 150,
+              height: 105.h,
               width: double.infinity,
             ),
           ),

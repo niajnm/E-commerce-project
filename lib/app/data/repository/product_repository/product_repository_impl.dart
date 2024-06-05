@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:e_commerce/app/data/remote/remote_auth/auth_remote_source.dart';
-import 'package:e_commerce/app/data/repository/auth_repository/auth_repository.dart';
 import 'package:e_commerce/app/data/repository/product_repository/model/product_data_model.dart';
 import 'package:e_commerce/app/data/repository/product_repository/product_repository.dart';
 import 'package:flutter/services.dart';

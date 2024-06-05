@@ -7,10 +7,9 @@ class BottomBarNotch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: _title,
-      home: MyStatefulWidget(),
-    );
+    return 
+ MyStatefulWidget();
+  
   }
 }
 
@@ -53,20 +52,23 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        //Floating action button on Scaffold
-        onPressed: () {
-          //code to execute on button press
-        },
-        child: Icon(Icons.send), //icon inside button
-      ),
+      floatingActionButton:ElevatedButton(
+  onPressed: () {},
+  child: Icon(Icons.search_rounded, color: Colors.white),
+  style: ElevatedButton.styleFrom(
+    shape: const CircleBorder(),
+    padding: EdgeInsets.all(20),
+    backgroundColor: Colors.red, // <-- Button color
+    foregroundColor: Colors.red, // <-- Splash color
+  ),
+),
 
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       //floating action button position to center
 
       bottomNavigationBar: BottomAppBar(
         //bottom navigation bar on scaffold
-        color: Colors.redAccent,
+        color: Colors.white,
         shape: CircularNotchedRectangle(), //shape of notch
         notchMargin:
             5, //notche margin between floating button and bottom appbar

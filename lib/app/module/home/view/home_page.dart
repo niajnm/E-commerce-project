@@ -36,8 +36,27 @@ class _HomePageState extends State<HomePage> {
     //final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
     return Scaffold(
-        //   bottomNavigationBar: const BottomBarNotch(),
-        appBar: AppBar(title: Text('Products')),
+         bottomNavigationBar: const BottomBarNotch(),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          title: const Text(
+            'Product List',
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          centerTitle: true,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search, color: Colors.black),
+              onPressed: () {
+                // Handle search button press
+              },
+            ),
+          ],
+        ),
         body: WillPopScope(
           onWillPop: () async {
             return _shouldWillPop(context);

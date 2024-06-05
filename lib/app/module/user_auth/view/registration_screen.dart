@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:e_commerce/app/app_widgets/TextFieldWithLabel.dart';
 import 'package:e_commerce/app/core/route/route_paths.dart';
 import 'package:e_commerce/app/module/user_auth/controller/auth_view_model.dart';
@@ -6,18 +7,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:go_router/go_router.dart';
+import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 import 'package:e_commerce/app/core/values/app_values.dart';
 import 'package:e_commerce/app/core/values/image_values.dart';
 
-class RegistrationScreen extends StatefulWidget {
-  const RegistrationScreen({super.key});
-
-  @override
-  State<RegistrationScreen> createState() => _RegistrationScreenState();
-}
-
-class _RegistrationScreenState extends State<RegistrationScreen> {
+class RegistrationScreen extends StatelessWidget {
   final formGlobalKey = GlobalKey<FormState>();
 
   var userMail;
@@ -25,57 +20,117 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   var userName;
   var confirmPass;
 
-  void showToast(String message) {
-    Fluttertoast.showToast(
-      msg: message,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      backgroundColor: Colors.black54,
-      textColor: Colors.white,
-    );
-  }
+  RegistrationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(),
-        body: Form(
-          key: formGlobalKey,
-          child: Padding(
-            padding: const EdgeInsets.all(AppValues.padding_16).r,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //    _bannerLogo(),
-                // _welcomeBackTitle(),
-                // _enterDetailsTitle(),
-                _nameInput(),
-                _emailInput(),
-                // Visibility(
-                //   visible: false,
-                //   child: Text(
-                //     'Invalid Email',
-                //     style: context.resources.styles
-                //         .caption1(context.resources.colors.error500),
-                //   ),
-                // ),
-                _passwordInput(),
-                _confirmPasswordInput(),
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Stack(
+                children: [
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.grey[200],
+                    child: Icon(
+                      Icons.person,
+                      size: 50,
+                      color: Colors.grey[800],
+                    ),
+                  ),
+                  const Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: CircleAvatar(
+                      radius: 15,
+                      backgroundColor: Colors.red,
+                      child: Icon(
+                        Icons.camera_alt,
+                        size: 15,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
+              _nameInput(),
+              _emailInput(),
+              // Visibility(
+              //   visible: false,
+              //   child: Text(
+              //     'Invalid Email',
+              //     style: context.resources.styles
+              //         .caption1(context.resources.colors.error500),
+              //   ),
+              // ),
+              _passwordInput(),
+              _confirmPasswordInput(),
 
-                SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
+              SizedBox(height: 20),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    padding: EdgeInsets.symmetric(vertical: 15),
+                  ),
+                  child: const Text(
+                    'Sign Up',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    elevation: 2,
+                    child: IconButton(
+                      icon: Icon(Icons.facebook),
+                      color: Colors.blue,
                       onPressed: () {
-                        _registrationPost();
+                        _registrationPost(context);
                       },
-                      child: const Text('Login')),
-                )
-                // _logInSubmitButton(),
-
-                // _changePasswordField()
-              ],
-            ),
+                    ),
+                  ),
+                  SizedBox(width: 20),
+                  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    elevation: 2,
+                    child: IconButton(
+                      icon: Icon(Icons.mail),
+                      color: Colors.red,
+                      onPressed: () {},
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  context.go(RoutePaths.loginPath);
+                },
+                child: const Text(
+                  'Already have an account? Login',
+                  style: TextStyle(color: Colors.blue),
+                ),
+              ),
+            ],
           ),
         ),
       ),
@@ -94,27 +149,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         height: 48.h,
       );
 
-  // Widget _appNameTitle() => Padding(
-  //       padding: EdgeInsets.only(left: 10.0),
-  //       child: Text(
-  //         'spectrahexa',
-  //         style: context.resources.styles
-  //             .headline3(context.resources.colors.primary500),
-  //       ),
-  //     );
-
-  // Widget _welcomeBackTitle() => Padding(
-  //       padding: EdgeInsets.only(top: 1.0).r,
-  //       child: Text('welcomeBack',
-  //           style: context.resources.styles
-  //               .headline1(context.resources.colors.neutral600)),
-  //     );
-
-  // Widget _enterDetailsTitle() => Text(
-  //       'enterYourDetails',
-  //       style: context.resources.styles
-  //           .bodyText1(context.resources.colors.neutral500),
-  //     );
 
   Widget _emailInput() => TextFieldWithLabel(
       false,
@@ -157,7 +191,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       enableTitle: false,
       (value) => confirmPass = value);
 
-  _registrationPost() {
+  _registrationPost(context) {
     if (formGlobalKey.currentState!.validate()) {
       formGlobalKey.currentState?.save();
 

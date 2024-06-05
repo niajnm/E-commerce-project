@@ -21,6 +21,7 @@ class HomeViewModel extends ChangeNotifier {
     if (response.isNotEmpty) {
       _products = [];
       _products = response;
+      notifyListeners();
     } else {
       // var error = LoginResponseModel(
       //     statusCode: response['status_code'],
