@@ -32,9 +32,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    //### View Model Initialiezation
-
-    //final List<Map> menuItems = context.menuList();
     //final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
     return Scaffold(
@@ -52,7 +49,7 @@ class _HomePageState extends State<HomePage> {
           centerTitle: true,
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.search, color: Colors.black),
+              icon: const Icon(Icons.search, color: Colors.black),
               onPressed: () {
                 // Handle search button press
               },
@@ -66,8 +63,9 @@ class _HomePageState extends State<HomePage> {
           },
 
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 20, 20, 0).r,
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0).r,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -84,7 +82,7 @@ class _HomePageState extends State<HomePage> {
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2,
-                              childAspectRatio: 0.7,
+                              childAspectRatio: 0.6,
                               crossAxisSpacing: 8,
                               mainAxisSpacing: 8,
                             ),
@@ -154,7 +152,7 @@ class _HomePageState extends State<HomePage> {
         Provider.of<HomeViewModel>(context, listen: false).sortByPrice(false);
         break;
       case 'Best selling':
-        // sortByBestSelling();
+          Provider.of<HomeViewModel>(context, listen: false).sortByRating();
         break;
     }
   }
@@ -166,21 +164,21 @@ class _HomePageState extends State<HomePage> {
         return StatefulBuilder(
           builder: (BuildContext context, StateSetter setState) {
             return Container(
-              padding: EdgeInsets.all(16),
-              height: 300,
+              padding: const EdgeInsets.all(16),
+              height: 500,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Filter',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   Expanded(
                     child: ListView(
                       children: [
                         RadioListTile<String>(
-                          title: Text('Newest'),
+                          title: const Text('Newest'),
                           value: 'Newest',
                           groupValue: selectedSort,
                           onChanged: (value) {
@@ -190,7 +188,7 @@ class _HomePageState extends State<HomePage> {
                           },
                         ),
                         RadioListTile<String>(
-                          title: Text('Oldest'),
+                          title: const Text('Oldest'),
                           value: 'Oldest',
                           groupValue: selectedSort,
                           onChanged: (value) {
@@ -200,7 +198,7 @@ class _HomePageState extends State<HomePage> {
                           },
                         ),
                         RadioListTile<String>(
-                          title: Text('Price low > High'),
+                          title: const Text('Price low > High'),
                           value: 'Price low > High',
                           groupValue: selectedSort,
                           onChanged: (value) {
@@ -210,7 +208,7 @@ class _HomePageState extends State<HomePage> {
                           },
                         ),
                         RadioListTile<String>(
-                          title: Text('Price high > Low'),
+                          title: const Text('Price high > Low'),
                           value: 'Price high > Low',
                           groupValue: selectedSort,
                           onChanged: (value) {
@@ -220,7 +218,7 @@ class _HomePageState extends State<HomePage> {
                           },
                         ),
                         RadioListTile<String>(
-                          title: Text('Best selling'),
+                          title: const Text('Best selling'),
                           value: 'Best selling',
                           groupValue: selectedSort,
                           onChanged: (value) {
@@ -239,7 +237,7 @@ class _HomePageState extends State<HomePage> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        child: Text('Cancel'),
+                        child: const Text('Cancel'),
                       ),
                       ElevatedButton(
                         onPressed: () {
@@ -248,7 +246,7 @@ class _HomePageState extends State<HomePage> {
                           });
                           Navigator.pop(context);
                         },
-                        child: Text('Apply'),
+                        child: const Text('Apply'),
                       ),
                     ],
                   )

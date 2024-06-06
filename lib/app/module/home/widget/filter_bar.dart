@@ -15,7 +15,7 @@ class FilterBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: EdgeInsets.symmetric(horizontal: 16, vertical: 0),
         color: Colors.white,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,7 +39,7 @@ class FilterBar extends StatelessWidget {
                   'Sort by',
                   style: TextStyle(color: Colors.grey[700]),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 DropdownButton<String>(
                   value: selectedSort,
                   onChanged: onSortChange,
@@ -47,7 +47,7 @@ class FilterBar extends StatelessWidget {
                       .map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
-                      child: Text(value),
+                      child: Text(''),
                     );
                   }).toList(),
                 ),

@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:e_commerce/app/core/services/service_locator.dart';
 import 'package:e_commerce/app/data/local/preference/preference_manager.dart';
 import 'package:e_commerce/app/module/home/view/home_page.dart';
+import 'package:e_commerce/app/module/home/widget/BottomBarNotch.dart';
 import 'package:e_commerce/app/module/profile/view/profile_page.dart';
 import 'package:e_commerce/app/module/user_auth/view/login_page.dart';
 import 'package:e_commerce/app/module/user_auth/view/registration_screen.dart';
@@ -28,7 +29,7 @@ class GoRouterService {
     },
     initialLocation: '/',
     routes: [
-      GoRoute(path: '/', builder: (context, state) => HomePage()),
+      GoRoute(path: '/', builder: (context, state) => MainScreen()),
       GoRoute(
           path: RoutePaths.profileScreen,
           builder: (context, state) => ProfileScreen()),

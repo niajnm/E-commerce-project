@@ -1,46 +1,23 @@
+import 'package:e_commerce/app/module/home/view/home_page.dart';
+import 'package:e_commerce/app/module/profile/view/profile_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BottomBarNotch extends StatelessWidget {
-  const BottomBarNotch({super.key});
-
-  static const String _title = 'Flutter Code Sample';
-
-  @override
-  Widget build(BuildContext context) {
-    return 
- MyStatefulWidget();
-  
-  }
-}
-
-class MyStatefulWidget extends StatefulWidget {
-  const MyStatefulWidget({super.key});
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
 
   @override
-  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+  _MainScreenState createState() => _MainScreenState();
 }
 
-class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Home',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Business',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: School',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 3: Settings',
-      style: optionStyle,
-    ),
+
+  static final List<Widget> _views = <Widget>[
+    HomePage(),
+    SearchView(),
+    CartView(),
+    ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -52,49 +29,70 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton:ElevatedButton(
-  onPressed: () {},
-  child: Icon(Icons.search_rounded, color: Colors.white),
-  style: ElevatedButton.styleFrom(
-    shape: const CircleBorder(),
-    padding: EdgeInsets.all(20),
-    backgroundColor: Colors.red, // <-- Button color
-    foregroundColor: Colors.red, // <-- Splash color
-  ),
-),
-
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      //floating action button position to center
-
+      body: _views[_selectedIndex],
       bottomNavigationBar: BottomAppBar(
-        //bottom navigation bar on scaffold
-        color: Colors.white,
-        shape: CircularNotchedRectangle(), //shape of notch
-        notchMargin:
-            5, //notche margin between floating button and bottom appbar
-        child: Row(
-          //children inside bottom appbar
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            IconButton(
-              icon: Icon(
-                Icons.menu,
-                color: Colors.white,
-              ),
-              onPressed: () {},
-            ),
-            // IconButton(icon: Icon(Icons.search, color: Colors.white,), onPressed: () {},),
-            //IconButton(icon: Icon(Icons.print, color: Colors.white,), onPressed: () {},),
-            IconButton(
-              icon: Icon(
-                Icons.people,
-                color: Colors.white,
-              ),
-              onPressed: () {},
-            ),
-          ],
+        shape: const CircularNotchedRectangle(),
+        notchMargin: 6.0,
+        child: SizedBox(
+          height: 60, // Adjust height to avoid overflow
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              buildTabIcon(Icons.home, 0),
+              buildTabIcon(Icons.shopping_cart, 2),
+              const SizedBox(width: 40), // The dummy child for spacing
+              buildTabIcon(Icons.person, 3),
+              buildTabIcon(Icons.settings, 1),
+            ],
+          ),
         ),
+      ),
+      floatingActionButton: ElevatedButton(
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
+          shape: const CircleBorder(),
+          padding: const EdgeInsets.all(20),
+          backgroundColor: Colors.red, // <-- Button color
+          foregroundColor: Colors.red, // <-- Splash color
+        ),
+        child: const Icon(Icons.search_rounded, color: Colors.white),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    );
+  }
+
+  Widget buildTabIcon(IconData icon, int index) {
+    return IconButton(
+      icon: Icon(
+        icon,
+        color: _selectedIndex == index ? Colors.red[800] : Colors.grey,
+      ),
+      onPressed: () {
+        _onItemTapped(index);
+      },
+    );
+  }
+}
+
+class SearchView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text(
+        'Search View',
+        style: TextStyle(fontSize: 24),
+      ),
+    );
+  }
+}
+
+class CartView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text(
+        'Cart View',
+        style: TextStyle(fontSize: 24),
       ),
     );
   }

@@ -40,7 +40,7 @@ class ProductItemCard extends StatelessWidget {
             child: Image.network(
               imageUrl,
               fit: BoxFit.cover,
-              height: 105.h,
+              height: 140.h,
               width: double.infinity,
             ),
           ),
