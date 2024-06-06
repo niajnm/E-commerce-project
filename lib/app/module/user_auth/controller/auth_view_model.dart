@@ -41,7 +41,9 @@ class UserAuthViewModel extends ChangeNotifier {
   Future<RegistrationResponseModel> userRegistration(
       userName, userMail, userPassword, confirmPass) async {
     RegistrationPostParam param = RegistrationPostParam(
-        username: userName, email: userMail, password: confirmPass);
+        username: 'userr1', email: 'userrr1@gmail.com', password: '000555');
+    // RegistrationPostParam param = RegistrationPostParam(
+    //     username: userName, email: userMail, password: confirmPass);
     log('login param $userName $userPassword');
     RegistrationResponseModel response =
         await _authenticationRepository.userRegistration(param);

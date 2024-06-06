@@ -6,7 +6,6 @@ import 'package:e_commerce/app/core/route/go_route_service.dart';
 import 'package:e_commerce/app/core/values/app_language.dart';
 import 'package:e_commerce/app/data/local/preference/preference_manager.dart';
 import 'package:e_commerce/app/data/local/preference/preference_manager_impl.dart';
-import 'package:e_commerce/app/module/weather/controller/weather_view_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:geolocator/geolocator.dart';
@@ -26,18 +25,6 @@ class _BaseAppState extends State<BaseApp> {
   void initState() {
     super.initState();
     // checklocation(context); // Pass the BuildContext here
-  }
-
-  checklocation(BuildContext context) async {
-    // Add the BuildContext parameter here
-    Position? currentPosition =
-        await LocationService.getLocationWithPermissionCheck();
-    if (currentPosition != null) {
-      Provider.of<WeatherViewModel>(context, listen: false).setCurrentLocation(
-          currentPosition.latitude, currentPosition.longitude);
-    } else {
-      // Handle the case when the location couldn't be obtained
-    }
   }
 
   Locale? _locale;

@@ -9,7 +9,6 @@ import 'package:e_commerce/app/module/user_auth/view/login_page.dart';
 import 'package:e_commerce/app/module/user_auth/view/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/app/core/route/route_paths.dart';
-import 'package:e_commerce/app/module/weather/view/weather_main_screen.dart';
 import 'package:go_router/go_router.dart';
 
 // GoRouter configuration
@@ -29,7 +28,7 @@ class GoRouterService {
     },
     initialLocation: '/',
     routes: [
-      GoRoute(path: '/', builder: (context, state) => MainScreen()),
+      GoRoute(path: '/', builder: (context, state) => LoginPage()),
       GoRoute(
           path: RoutePaths.profileScreen,
           builder: (context, state) => ProfileScreen()),
@@ -37,9 +36,7 @@ class GoRouterService {
       GoRoute(
           path: RoutePaths.registrationScreen,
           builder: (context, state) => RegistrationScreen()),
-      GoRoute(
-          path: RoutePaths.weatherMainPage,
-          builder: (context, state) => const WeatherMainScreen()),
+
       // GoRoute(
       //     path: RoutePaths.homePage, builder: (context, state) => HomePage()),
       //   GoRoute(

@@ -75,7 +75,9 @@ class RegistrationScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    _registrationPost(context);
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red,
                     shape: RoundedRectangleBorder(
@@ -191,8 +193,8 @@ class RegistrationScreen extends StatelessWidget {
       (value) => confirmPass = value);
 
   _registrationPost(context) {
-    if (formGlobalKey.currentState!.validate()) {
-      formGlobalKey.currentState?.save();
+    // if (formGlobalKey.currentState!.validate()) {
+    //   formGlobalKey.currentState?.save();
 
       Provider.of<UserAuthViewModel>(context, listen: false)
           .userRegistration(userName, userMail, userPassword, confirmPass)
@@ -215,7 +217,7 @@ class RegistrationScreen extends StatelessWidget {
                         fontSize: 16.0)
                   }
               });
-    }
+   // }
   }
 
   bool isButtonDisabled() {
