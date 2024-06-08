@@ -1,10 +1,9 @@
 import 'package:e_commerce/app/core/values/app_colors.dart';
+import 'package:e_commerce/app/core/values/extention.dart';
 import 'package:e_commerce/app/data/repository/product_repository/model/product_data_model.dart';
 import 'package:e_commerce/app/module/home/controller/home_view_model.dart';
-import 'package:e_commerce/app/module/home/widget/BottomBarNotch.dart';
 import 'package:e_commerce/app/module/home/widget/card_product.dart';
 import 'package:e_commerce/app/module/home/widget/filter_bar.dart';
-import 'package:e_commerce/app/module/home/widget/grid_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -32,24 +31,20 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    //final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
     return Scaffold(
-        // bottomNavigationBar: const BottomBarNotch(),
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
           elevation: 0,
-          title: const Text(
+          title: Text(
             'Product List',
-            style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
+            style: context.appThemeText.headlineSmall,
           ),
           centerTitle: true,
           actions: <Widget>[
             IconButton(
-              icon: const Icon(Icons.search, color: Colors.black),
+              icon: const Icon(
+                Icons.search,
+              ),
               onPressed: () {
                 // Handle search button press
               },
@@ -152,7 +147,7 @@ class _HomePageState extends State<HomePage> {
         Provider.of<HomeViewModel>(context, listen: false).sortByPrice(false);
         break;
       case 'Best selling':
-          Provider.of<HomeViewModel>(context, listen: false).sortByRating();
+        Provider.of<HomeViewModel>(context, listen: false).sortByRating();
         break;
     }
   }

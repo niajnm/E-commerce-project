@@ -17,7 +17,7 @@ class _MainScreenState extends State<MainScreen> {
     HomePage(),
     SearchView(),
     CartView(),
-    ProfileScreen(),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -29,6 +29,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: _views[_selectedIndex],
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
@@ -52,8 +53,7 @@ class _MainScreenState extends State<MainScreen> {
         style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),
           padding: const EdgeInsets.all(20),
-          backgroundColor: Colors.red, // <-- Button color
-          foregroundColor: Colors.red, // <-- Splash color
+          // <-- Splash color
         ),
         child: const Icon(Icons.search_rounded, color: Colors.white),
       ),

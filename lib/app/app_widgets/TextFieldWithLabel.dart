@@ -11,24 +11,24 @@ class TextFieldWithLabel extends StatefulWidget {
   final bool readOnly;
   final bool validation;
   final bool isFieldForEmail;
-  final String labelText;
+  final String? labelText;
   final String hintText;
-  final String prefixIcon;
+  final IconData? prefixIcon;
   final Function onChanged;
   final bool password;
   final controller;
   final enableTitle;
   double width;
 
-  TextFieldWithLabel(
-      this.isRequired, this.labelText, this.hintText, this.onChanged,
+  TextFieldWithLabel(this.isRequired, this.hintText, this.onChanged,
       {this.password = false,
+      this.labelText = '',
       this.readOnly = true,
       this.isFieldForEmail = false,
       this.width = double.infinity,
       this.validation = false,
       this.enableTitle = true,
-      this.prefixIcon = '',
+      this.prefixIcon,
       this.controller,
       Key? key})
       : super(key: key);
@@ -48,79 +48,65 @@ class _TextFieldWithLabelState extends State<TextFieldWithLabel> {
       children: [
         Visibility(
             visible: widget.enableTitle,
-            child: FormLabel(widget.labelText, widget.isRequired)),
+            child: FormLabel(widget.labelText!, widget.isRequired)),
         Padding(
           padding: const EdgeInsets.only(bottom: AppValues.padding_24).r,
-          child: Container(
-              height: 60.h,
-              decoration: widget.readOnly ? textBoxDecoration() : null,
-              width: widget.width,
-              child: Center(
-                child: Card(
-                  elevation: 4,
-                  child: TextFormField(
-                      //  clipBehavior: Clip.none,
-                      controller: widget.controller,
-                      readOnly: widget.readOnly,
-                      onTapOutside: (event) =>
-                          FocusScope.of(context).requestFocus(FocusNode()),
-                      obscureText:
-                          widget.password == true ? _obscureText : false,
-                      keyboardType: widget.isFieldForEmail
-                          ? TextInputType.emailAddress
-                          : TextInputType.multiline,
-                      validator: widget.validation == true
-                          ? (input) => input!.isValidEmail()
-                              ? null
-                              : "\u26A0 Check your email"
-                          : null,
-                      //   style: context.resources.styles.formInputStyle(),
-                      // scrollPadding: EdgeInsets.zero,
-                      textAlignVertical: TextAlignVertical.center,
-                      onChanged: (value) => widget.onChanged(value),
-                      inputFormatters: widget.isFieldForEmail
-                          ? [
-                              FilteringTextInputFormatter.deny(RegExp(r"\s")),
-                            ]
-                          : [],
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(
-                                vertical: AppValues.height_50.h / 3.5,
-                                horizontal: 8.0)
-                            .r,
-
-                        prefixIcon: widget.prefixIcon == ''
-                            ? Icon(Icons.lock_outline_rounded)
-                            : SvgPicture.asset(widget.prefixIcon),
-                        suffixIcon: widget.password == true
-                            ? GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    _obscureText = !_obscureText;
-                                  });
-                                },
-                                child: Icon(
-                                  _obscureText
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                ),
-                              )
-                            : null,
-                        disabledBorder: InputBorder.none,
-                        border: InputBorder.none,
-                        // border: customeBorder(AppColors.neutral300),
-                        //  errorBorder: customeBorder(AppColors.errorColor),
-                        // focusedBorder: customeBorder(widget.readOnly
-                        //     ? AppColors.neutral300
-                        //     : AppColors.primary),
-                        //  enabledBorder: customeBorder(AppColors.neutral300),
-                        hintText: widget.hintText,
-                        counterText: "",
-                        // hintStyle: hintText(
-                        //     widget.readOnly ? AppColors.neutral600 : null)
-                      )),
-                ),
-              )),
+          child: SizedBox(
+            child: Card(
+              child: TextFormField(
+                  //  clipBehavior: Clip.none,
+                  controller: widget.controller,
+                  readOnly: widget.readOnly,
+                  onTapOutside: (event) =>
+                      FocusScope.of(context).requestFocus(FocusNode()),
+                  obscureText: widget.password == true ? _obscureText : false,
+                  keyboardType: widget.isFieldForEmail
+                      ? TextInputType.emailAddress
+                      : TextInputType.multiline,
+                  validator: widget.validation == true
+                      ? (input) =>
+                          input!.isValidEmail() ? null : "\u26A0 Invalid email"
+                      : null,
+                  textAlignVertical: TextAlignVertical.center,
+                  onChanged: (value) => widget.onChanged(value),
+                  inputFormatters: widget.isFieldForEmail
+                      ? [
+                          FilteringTextInputFormatter.deny(RegExp(r"\s")),
+                        ]
+                      : [],
+                  decoration: InputDecoration(
+                    prefixIcon: widget.prefixIcon == null
+                        ? null
+                        : Icon(widget.prefixIcon),
+                    suffixIcon: widget.password == true
+                        ? GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _obscureText = !_obscureText;
+                              });
+                            },
+                            child: Icon(
+                              _obscureText
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                            ),
+                          )
+                        : null,
+                    disabledBorder: InputBorder.none,
+                    border: InputBorder.none,
+                    // border: customeBorder(AppColors.neutral300),
+                    //  errorBorder: customeBorder(AppColors.errorColor),
+                    // focusedBorder: customeBorder(widget.readOnly
+                    //     ? AppColors.neutral300
+                    //     : AppColors.primary),
+                    //  enabledBorder: customeBorder(AppColors.neutral300),
+                    hintText: widget.hintText,
+                    counterText: "",
+                    // hintStyle: hintText(
+                    //     widget.readOnly ? AppColors.neutral600 : null)
+                  )),
+            ),
+          ),
         ),
       ],
     );

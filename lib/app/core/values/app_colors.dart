@@ -15,11 +15,11 @@ abstract class AppColors {
   static const Color accentOrange = Color(0xFFF2994A);
   static const Color accentRed = Color(0xFFED4D4D);
   static const Color almostBlack = Color(0xFF1F3541);
-  static const Color appBarColor =    Color(0xFF97ABFF);
-  static const Color primary =    Color(0xFF97ABFF);
-  static const Color appBarColor2 =    Color.fromARGB(239, 41, 75, 167);
+  static const Color appBarColor = Color(0xFF97ABFF);
+  static const Color primary = Color(0xFF97ABFF);
+  static const Color appBarColor2 = Color.fromARGB(239, 41, 75, 167);
 
-     //  Color(0xff123597) ;
+  //  Color(0xff123597) ;
   static const Color appBarColorDark = primaryGreen05;
   static const Color appBarIconColor = primaryGreen05;
   static const Color appBarTextColor = primaryGreen05;
@@ -106,7 +106,7 @@ abstract class AppColors {
   static const Color urgentBannerBorder = Color(0xFFFB473C);
   static const Color urgentBannerMessage = Color(0xFFBC1A1A);
   static const Color urgentBannerTitle = Color(0xFFE12309);
-  static const MaterialColor colorPrimarySwatch = Colors.cyan;
+  static const MaterialColor colorPrimarySwatch = Colors.grey;
   static const Color blueWarningPrimaryColor = Color(0xFF3CABFB);
   static const Color blueWarningFillColor = Color(0xFFEFF8FF);
   static const Color redWarningPrimaryColor = Color(0xFFFB473C);

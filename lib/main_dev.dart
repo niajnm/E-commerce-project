@@ -25,17 +25,17 @@ void main() async {
     envConfig: devConfig,
   );
 
-  WidgetsFlutterBinding.ensureInitialized();
   // After adding any variable in .env then enable this line
   //await dotenv.load(fileName: "conf/.env");
 
   await GetStorage.init(databaseName);
   await Hive.initFlutter();
 
-  await Hive.openBox<String>('json_data');
+  await Hive.openBox<String>('LOCAL_STORE');
 
   await ScreenUtil.ensureScreenSize();
   await ServiceLocator.setUpServiceLocator();
+  WidgetsFlutterBinding.ensureInitialized();
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(

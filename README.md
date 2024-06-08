@@ -1,10 +1,11 @@
+
 <h1>E-commerce</h1>
 
 <p>This project follows a structured architecture inspired by MVVM (Model-View-ViewModel) principles to enhance maintainability and scalability. It is organized into different directories, each serving a specific purpose.</p>
 
 
 
-<h2>Download Apk <a href="https://drive.google.com/drive/folders/1xvTwNib3G8GTwGqVN4OY0iRGeSscObnF?usp=sharing">Google Drive</a>.</h2>
+<h2>Download Apk <a href="https://drive.google.com/drive/folders/1Dw6c44WKX7iB_1PPGNJTrcluRREIx8-9?usp=sharing">Google Drive</a>.</h2>
 
 <h2>Project Structure</h2>
 
@@ -25,7 +26,7 @@ lib
 |   |   |-- home
 |   |   |   |-- view
 |   |   |   |-- controller
-|   |   |-- weather
+|   |   |-- auth
 |   |   |   |-- view
 |   |   |   |-- controller
 |   |-- network
@@ -52,17 +53,17 @@ lib
 <h2>Task Description:</h2>
 
 <ul>
-  <li><strong>:</strong> .</li>
-  <li><strong>:</strong> .</li>
-  <li><strong>Local Database (Hive):</strong> Store the fetched data locally and show to view when internet is off using Hive.</li>
+  <li><strong>Design from Figma</strong> .</li>
+  <li><strong>Implement Authentication API</strong> .</li>
+    <li><strong>Display the JSON Data and sort by rating price etc.</strong> .</li>
+  <li><strong>Local Database (Hive):</strong>  Store the token using Hive.</li>
     <li><strong>Provider for State Management:</strong> Utilize the Provider package for state management.</li>
   <li><strong>Service locator:</strong> Decouple the interface(abstract base class) from a concreate implementation.</li>
     <li><strong>Singleton:</strong> Dio and env setup implemented in singleton.</li>
      <li><strong>Theme:</strong> Duel theme setup by system theme.</li>
-    
-    
+          <li><strong>CI/CD:</strong> Github action CI/CD implement dev and prod..</li>
+    <li><strong>Test:</strong>Login API test with Mockito.</li>
 </ul>
-
 
 
 <h3>Demo Images</h3>
@@ -71,10 +72,27 @@ lib
     <img src="images/home_light.jpeg" height="600"/>
   </div>
   <div style="margin-right:15px">
+    <img src="images/login_light.jpeg" height="600"/>
+  </div>
+
+  <div style="margin-right:15px">
+    <img src="images/SignUp_light.jpeg.jpeg" height="600"/>
+  </div>
+    <div style="margin-right:15px">
+    <img src="images/profile_light.jpeg.jpeg" height="600"/>
+  </div>
+<br>
+  <div>
     <img src="images/home_dark.jpeg" height="600"/>
   </div>
-  <div>
-    <img src="images/details.jpeg" height="600"/>
+    <div>
+    <img src="images/login_dark.jpeg" height="600"/>
+  </div>
+      <div>
+    <img src="images/SignUp_dark.jpeg" height="600"/>
+        <div>
+    <img src="images/" height="600"/>
+  </div>
   </div>
 </div>
 
@@ -114,6 +132,9 @@ lib
 
   <pre><code>flutter run --flavor dev lib/main_dev.dart --release</code></pre>
   <pre><code>flutter run --flavor prod lib/main_prod.dart --release</code></pre>
+
+  <li>Build the app:</li>
+  <pre><code>flutter build apk --flavor dev --target lib/main_dev.dart --release --obfuscate --split-debug-info=./split-debug-info</code></pre>
 </ol>
 
 

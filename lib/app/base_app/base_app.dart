@@ -1,15 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:e_commerce/app/core/base/app_theme_data.dart';
 import 'package:e_commerce/app/core/base/theme.dart';
 import 'package:e_commerce/app/core/route/go_route_service.dart';
 import 'package:e_commerce/app/core/values/app_language.dart';
 import 'package:e_commerce/app/data/local/preference/preference_manager.dart';
 import 'package:e_commerce/app/data/local/preference/preference_manager_impl.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:e_commerce/app/utils/location/location_service.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -24,7 +21,6 @@ class _BaseAppState extends State<BaseApp> {
   @override
   void initState() {
     super.initState();
-    // checklocation(context); // Pass the BuildContext here
   }
 
   Locale? _locale;

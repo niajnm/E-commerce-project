@@ -53,7 +53,16 @@ class AuthRemoteSourceImpl extends BaseRemoteSource
 
   @override
   Future<LoginResponseModel> updateProfile(LoginPostParams queryParams) {
-    // TODO: implement updateProfile
-    throw UnimplementedError();
+    var endpoint = loginUrl;
+    var dioCall = dioCli.post(endpoint, queryParameters: queryParams.toJson());
+
+    log('login info $dioCall');
+
+    try {
+      return callApiWithErrorParser(dioCall)
+          .then((response) => _parseLoginResponse(response));
+    } catch (e) {
+      rethrow;
+    }
   }
 }

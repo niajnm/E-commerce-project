@@ -8,6 +8,7 @@ import 'package:e_commerce/app/data/remote/remote_auth/api_model/registration_po
 import 'package:e_commerce/app/data/remote/remote_auth/api_model/registration_res_model.dart';
 import 'package:e_commerce/app/data/repository/auth_repository/auth_repository.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:hive/hive.dart';
 
 class UserAuthViewModel extends ChangeNotifier {
   final AuthRepository _authenticationRepository =
@@ -18,14 +19,16 @@ class UserAuthViewModel extends ChangeNotifier {
 
     LoginPostParams param =
         LoginPostParams(userName: userName, pass: userPassword);
-    log('login param $userName $userPassword');
+
     LoginResponseModel response =
         await _authenticationRepository.userLogin(param);
 
-    log('login param $userName $userPassword');
-
     if (response.token != null) {
-      userRepository.setString("token", "$response.token");
+      var box = await Hive.openBox<String>('LOCAL_STORE');
+
+      await box.clear();
+      String token = "${response.token}";
+      await box.put('token', token);
       return response;
     } else {
       // var error = LoginResponseModel(
@@ -40,10 +43,11 @@ class UserAuthViewModel extends ChangeNotifier {
 
   Future<RegistrationResponseModel> userRegistration(
       userName, userMail, userPassword, confirmPass) async {
-    RegistrationPostParam param = RegistrationPostParam(
-        username: 'userr1', email: 'userrr1@gmail.com', password: '000555');
+    log('RegistrationPostParam $userName $userMail $userPassword');
     // RegistrationPostParam param = RegistrationPostParam(
-    //     username: userName, email: userMail, password: confirmPass);
+    //     username: 'userr1', email: 'userrr1@gmail.com', password: '000555');
+    RegistrationPostParam param = RegistrationPostParam(
+        username: userName, email: userMail, password: confirmPass);
     log('login param $userName $userPassword');
     RegistrationResponseModel response =
         await _authenticationRepository.userRegistration(param);
